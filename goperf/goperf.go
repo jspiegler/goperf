@@ -113,7 +113,7 @@ func main() {
 	vPtr := flag.Bool("v", false, "v, display version and quit")
 	ratePtr := flag.String("rate", "", "rate nnn[X], specify rate in bps, with an optional multiplier X (K, M, or G)")
 	qodePtr := flag.Bool("qode", false, "qode, quit on data error (default: go back to listening)")
-	qoccPtr := flag.Bool("qocc", false, "qocc, quite on closed connection (default: go back to listening)")
+	qoccPtr := flag.Bool("qocc", false, "qocc, quit on closed connection (default: go back to listening)")
 	rbsPtr := flag.Int("rbs", -1, "rbs nnn, set read buffer size (for TCP) to nnn (default 1MB)")
 	wbsPtr := flag.Int("wbs", -1, "rbs nnn, set write buffer size (for TCP) to nnn (default 1MB)")
 	flag.Parse()
