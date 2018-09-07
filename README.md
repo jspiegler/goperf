@@ -33,3 +33,13 @@ goperf is controlled via command line flags, and generates its output to the con
 | -wbs  (*)  | integer        | -wbs nnn: for TCP connections, set write buffer size to *nnn* (default 1MB)             |
 
 (*) experimental, not recommended for production use
+
+# Examples
+
+Examples assume 2 machines with IP addresses 10.0.0.1 and 10.0.0.2
+
+TCP connection rom 10.0.0.1 to 10.0.0.2, unlimited data rate:
+
+On 10.0.0.1: ```./goperf -tcp -c10.0.0.2:8888
+
+On 10.0.0.2: ```./goperf -tcp -c10.0.0.2:8888
