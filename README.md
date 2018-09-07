@@ -23,11 +23,13 @@ goperf is controlled via command line flags, and generates its output to the con
 | -qocc      | boolean        | -qocc: for server operation, quit on closed connection (default: go back to listening)  |
 | -qode      | boolean        | -qode: for server operation, quit on data error (default: go back to listening)         |
 | -rate      | string         | -rate nnn[X]: specify rate in bps, with an optional multiplier X (K, M, or G)           |
-| -rbs       | integer        | -rbs nnn: for TCP connections, set read buffer size to *nnn* (default 1MB)              |
+| -rbs  (*)  | integer        | -rbs nnn: for TCP connections, set read buffer size to *nnn* (default 1MB)              |
 | -s         | string         | -s N, for server operation, listen on port *N* (all interfaces)                         |
 | -scroll    | boolean        | -scroll: make output scroll (default: no scroll)                                        |
 | -tcp       | boolean        | -tcp: use TCP                                                                           |
 | -ts        | boolean        | -ts: display timestamp on each line of output                                           |
 | -udp       | booelan        | -udp: use UDP                                                                           |
 | -v         | boolean        | -v: display version and quit                                                            |
-| -wbs       | integer        | -wbs nnn: for TCP connections, set write buffer size to *nnn* (default 1MB)             |
+| -wbs  (*)  | integer        | -wbs nnn: for TCP connections, set write buffer size to *nnn* (default 1MB)             |
+
+* experimental, not recommended for production use
