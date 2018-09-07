@@ -32,4 +32,4 @@ goperf is controlled via command line flags, and generates its output to the con
 | -v         | boolean        | -v: display version and quit                                                            |
 | -wbs  (*)  | integer        | -wbs nnn: for TCP connections, set write buffer size to *nnn* (default 1MB)             |
 
-* experimental, not recommended for production use
+(*) experimental, not recommended for production use
