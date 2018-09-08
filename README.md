@@ -38,8 +38,8 @@ goperf is controlled via command line flags, and generates its output to the con
 
 Examples assume 2 machines with IP addresses 10.0.0.1 and 10.0.0.2
 
-TCP connection rom 10.0.0.1 to 10.0.0.2, unlimited data rate:
+TCP connection from 10.0.0.1 to 10.0.0.2, unlimited data rate:
 
-On 10.0.0.1: ```./goperf -tcp -c10.0.0.2:8888
+On 10.0.0.1: <tt>./goperf -tcp -c10.0.0.2:8888 </tt>
 
-On 10.0.0.2: ```./goperf -tcp -c10.0.0.2:8888
+On 10.0.0.2: <tt>./goperf -tcp -c10.0.0.2:8888 </TT>
