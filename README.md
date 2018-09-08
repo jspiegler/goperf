@@ -38,7 +38,17 @@ goperf is controlled via command line flags, and generates its output to the con
 
 Examples assume 2 machines with IP addresses 10.0.0.1 and 10.0.0.2
 
+* TCP example:
+
 | 10.0.0.1 Command | 10.0.0.2 Command | Notes |
 | ---------------- | ---------------- | ----- |
-|<tt>./goperf -tcp -s 8888</tt>|      |Run server on 10.0.0.1, listenming on port 8888|
-|                  |<tt>./goperf -tcp -c 10.0.0.1:8888|Run client on 10.0.0.2, connecting to 10.0.0.1 on port 8888|
+|<tt>./goperf -tcp -s 8800</tt>|      | Run server on 10.0.0.1, listening on port 8800|
+|                  |<tt>./goperf -tcp -c 10.0.0.1:8800| Run client on 10.0.0.2, connecting to 10.0.0.1 on port 8800|
+
+* UDP example:
+
+| 10.0.0.1 Command | 10.0.0.2 Command | Notes |
+| ---------------- | ---------------- | ----- |
+|<tt>./goperf -udp -s 8880</tt>|      | Run server on 10.0.0.2, listening on port 8880|
+|                  |<tt>./goperf -udp -c 10.0.0.1:8880|Run client on 10.0.0.2, connection to 10.0.0.1 om port 8880|
+
