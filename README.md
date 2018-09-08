@@ -48,7 +48,7 @@ Examples assume 2 machines with IP addresses 10.0.0.1 and 10.0.0.2
 * UDP example:
 
 | 10.0.0.1 Command | 10.0.0.2 Command | Notes |
-| ---------------- | ---------------- | ----- |
-|<tt>./goperf -udp -s 8880</tt>|      | Run server on 10.0.0.2, listening on port 8880|
+|:---------------- |:---------------- |:----- |
+|<tt>./goperf -udp -s 8880</tt>|      | Run server on 10.0.0.1, listening on port 8880|
 |                  |<tt>./goperf -udp -c 10.0.0.1:8880|Run client on 10.0.0.2, connection to 10.0.0.1 om port 8880|
 
