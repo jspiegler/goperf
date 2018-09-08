@@ -13,7 +13,7 @@ go get github.com/jspiegler/goperf/goperf
 goperf is controlled via command line flags, and generates its output to the console from which it was run. All available flags are described below:
 
 | Flag       | Parameter Type | Description                                                                             |
-| ---------- |----------------|-----------------------------------------------------------------------------------------|
+|------------|----------------|-----------------------------------------------------------------------------------------|
 | -Mbps      | integer        | -Mbps nnn: for UDP connections, specify udp rate in megabits per second                 |
 | -c         | string         | -c host:port: run as client, making connection to IP address *host*, port number *port* |
 | -nb        | integer        | -nb nnn: send/receive *nnn* bytes, then quit (default: no byte limit)                   |
@@ -38,8 +38,8 @@ goperf is controlled via command line flags, and generates its output to the con
 
 Examples assume 2 machines with IP addresses 10.0.0.1 and 10.0.0.2
 
-TCP connection from 10.0.0.1 to 10.0.0.2, unlimited data rate:
+| On 10-.0.01 |TCP connection from 10.0.0.1 to 10.0.0.2, unlimited data rate:
 
-On 10.0.0.1: <tt>./goperf -tcp -c10.0.0.2:8888 </tt>
+On 10.0.0.1, run the server: <tt>./goperf -tcp -s 8888 </tt>
 
-On 10.0.0.2: <tt>./goperf -tcp -c10.0.0.2:8888 </TT>
+On 10.0.0.2, run the client: <tt>./goperf -tcp -c 10.0.0.2:8888 </tt>
