@@ -114,10 +114,10 @@ func main() {
 	ratePtr := flag.String("rate", "", "rate nnn[X], specify rate in bps, with an optional multiplier X (K, M, or G)")
 	qodePtr := flag.Bool("qode", false, "qode, quit on data error (default: go back to listening)")
 	qoccPtr := flag.Bool("qocc", false, "qocc, quit on closed connection (default: go back to listening)")
-	rbsPtr := flag.Int("rbs", -1, "rbs nnn, set read buffer size (for TCP) to nnn (default 1MB)")
-	wbsPtr := flag.Int("wbs", -1, "rbs nnn, set write buffer size (for TCP) to nnn (default 1MB)")
-	flag.Parse()
+//	rbsPtr := flag.Int("rbs", -1, "rbs nnn, set read buffer size (for TCP) to nnn (default 1MB)")
+//	wbsPtr := flag.Int("wbs", -1, "rbs nnn, set write buffer size (for TCP) to nnn (default 1MB)")
 
+	flag.Parse()
 	var rate int = 0
 	var success bool
 
@@ -241,17 +241,17 @@ func main() {
 	} else {
 		/* TCP */
 		if *sPtr != "" {
-			exitCode = runTcpServer(*sPtr, *scrollPtr, *tsPtr, *nsPtr, *nbPtr, *qodePtr, *qoccPtr, *rbsPtr, *wbsPtr)
+			exitCode = runTcpServer(*sPtr, *scrollPtr, *tsPtr, *nsPtr, *nbPtr, *qodePtr, *qoccPtr /* , *rbsPtr, *wbsPtr */)
 			return
 		} else {
-			exitCode = runTcpClient(*cPtr, *scrollPtr, *tsPtr, *nsPtr, *nbPtr, rate, *rbsPtr, *wbsPtr)
+			exitCode = runTcpClient(*cPtr, *scrollPtr, *tsPtr, *nsPtr, *nbPtr, rate /*, *rbsPtr, *wbsPtr */)
 			return
 		}
 	}
 }
 
 /******************************************************************************/
-func runTcpServer(s string, scroll bool, ts bool, ns int64, nb int64, qode bool, qocc bool, rbs int, wbs int) int {
+func runTcpServer(s string, scroll bool, ts bool, ns int64, nb int64, qode bool, qocc bool /*, rbs int, wbs int */) int {
 
 	var connClosed bool = false
 	var dataError bool = false
@@ -300,9 +300,9 @@ func runTcpServer(s string, scroll bool, ts bool, ns int64, nb int64, qode bool,
 			ctlCRecd = true
 		}()
 
-		if ret := setBufferSizes(conn, rbs, wbs); ret != 0 {
-			return ret
-		}
+//		if ret := setBufferSizes(conn, rbs, wbs); ret != 0 {
+//			return ret
+//		}
 
 		var totalBytesRcvd int64 = 0
 		var nsec uint64 = 0
@@ -426,7 +426,7 @@ func verifyTCPRead(buf []byte, n int, totalBytesRcvd int64) error {
 }
 
 /******************************************************************************/
-func runTcpClient(hostport string, scroll bool, ts bool, ns int64, nb int64, rate int, rbs int, wbs int) int {
+func runTcpClient(hostport string, scroll bool, ts bool, ns int64, nb int64, rate int /*, rbs int, wbs int */) int {
 
 	var ctlCRecd bool = false
 
@@ -443,9 +443,9 @@ func runTcpClient(hostport string, scroll bool, ts bool, ns int64, nb int64, rat
 		return 9
 	}
 
-	if ret := setBufferSizes(conn, rbs, wbs); ret != 0 {
-		return ret
-	}
+//	if ret := setBufferSizes(conn, rbs, wbs); ret != 0 {
+//		return ret
+//	}
 
 	var totalBytesSent int64 = 0
 	var nsec uint64 = 0

@@ -4,6 +4,16 @@
 
 An application, in the command-line style of iperf, written in Go, for testing the setup of TCP and UDP data connections, monitoring and reporting of a connection's data rate, and verification that the received data matches the sent.
 
+For TCP connections, the data rate can be restrained by specifying a data rate at which the client should transmit.
+
+For UDP connections, two (and only rwo) of the following three parameters are specified to control tjhe data rate:
+
+* packet size (<tt>-psize</tt> flag)
+* packets per second (<tt>-pps</tt> flag)
+* data rate Mbps (<tt>-Mbps</tt> flag
+
+When testing UDP, *goperf* also calculates and displays jitter, as well as dropped and out of order packets.
+
 # Installation
 
 go get github.com/jspiegler/goperf/goperf
@@ -23,16 +33,12 @@ goperf is controlled via command line flags, and generates its output to the con
 | -qocc      | boolean        | -qocc: for server operation, quit on closed connection (default: go back to listening)  |
 | -qode      | boolean        | -qode: for server operation, quit on data error (default: go back to listening)         |
 | -rate      | string         | -rate nnn[X]: specify rate in bps, with an optional multiplier X (K, M, or G)           |
-| -rbs  (*)  | integer        | -rbs nnn: for TCP connections, set read buffer size to *nnn* (default 1MB)              |
 | -s         | string         | -s N, for server operation, listen on port *N* (all interfaces)                         |
 | -scroll    | boolean        | -scroll: make output scroll (default: no scroll)                                        |
 | -tcp       | boolean        | -tcp: use TCP                                                                           |
 | -ts        | boolean        | -ts: display timestamp on each line of output                                           |
 | -udp       | booelan        | -udp: use UDP                                                                           |
 | -v         | boolean        | -v: display version and quit                                                            |
-| -wbs  (*)  | integer        | -wbs nnn: for TCP connections, set write buffer size to *nnn* (default 1MB)             |
-
-(*) experimental, not recommended for production use
 
 # Examples
 
@@ -41,7 +47,7 @@ Examples assume 2 machines with IP addresses 10.0.0.1 and 10.0.0.2
 * TCP example:
 
 | 10.0.0.1 Command | 10.0.0.2 Command | Notes |
-| ---------------- | ---------------- | ----- |
+|:---------------- |:---------------- |:----- |
 |<tt>./goperf -tcp -s 8800</tt>|      | Run server on 10.0.0.1, listening on port 8800|
 |                  |<tt>./goperf -tcp -c 10.0.0.1:8800| Run client on 10.0.0.2, connecting to 10.0.0.1 on port 8800|
 
@@ -49,6 +55,6 @@ Examples assume 2 machines with IP addresses 10.0.0.1 and 10.0.0.2
 
 | 10.0.0.1 Command | 10.0.0.2 Command | Notes |
 |:---------------- |:---------------- |:----- |
-|<tt>./goperf -udp -s 8880</tt>|      | Run server on 10.0.0.1, listening on port 8880|
-|                  |<tt>./goperf -udp -c 10.0.0.1:8880|Run client on 10.0.0.2, connection to 10.0.0.1 om port 8880|
+|<tt>./goperf -udp -s 8810</tt>|      | Run server on 10.0.0.1, listening on port 8810|
+|                  |<tt>./goperf -udp -c 10.0.0.1:8810 -pps 100 -psize 1000|Run client on 10.0.0.2, connection to 10.0.0.1 om port 8810|
 
