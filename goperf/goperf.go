@@ -30,7 +30,7 @@ import (
 	"unsafe"
 )
 
-const goperfVersion string = "0.7.0"
+const goperfVersion string = "0.7.1"
 
 type droppedTicksTracker struct {
 	sync.Mutex
